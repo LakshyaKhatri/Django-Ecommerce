@@ -3,15 +3,27 @@ from django.http import HttpResponse
 
 
 def home_page(request):
-    return render(request, "home_page.html", {})
+    context = {
+        "title": "Homepage",
+        "content": "Welcome to homepage."
+    }
+    return render(request, "home_page.html", context)
 
 
 def about_page(request):
-    return render(request, "home_page.html", {})
+    context = {
+        "title": "About",
+        "content": "Welcome to About Page."
+    }
+    return render(request, "home_page.html", context)
 
 
 def contact_page(request):
-    return render(request, "home_page.html", {})
+    context = {
+        "title": "Contact",
+        "content": "Welcome to Contact Page."
+    }
+    return render(request, "home_page.html", context)
 
 
 def home_page_old(request):
