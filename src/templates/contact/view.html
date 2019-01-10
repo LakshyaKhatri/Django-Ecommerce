@@ -21,13 +21,10 @@
         <p>{{ content }}</p>
         <div class='col-sm-6 col-12'>
         <form method='POST'> {% csrf_token %}
-            <input name='fullname' type='text' class='form-contol' placeholder='Name'>
-            <br>
-            <input name='email' type='email' class='form-contol' placeholder='Email'>
-            <br>
-            <textarea name="content" class='form-contol' placeholder="Your content."></textarea>
-            <br>
-            <button type='submit' class='btn btn-default'>Submit</button>
+            <input name="fullname" type="text" class="form-control" placeholder="Name">
+            <input name="email" type="email" class="form-control" placeholder="Enter email">
+            <textarea name="content" class="form-control" rows="3" placeholder="Your Content."></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         </div>
     </div>
