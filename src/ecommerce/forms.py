@@ -22,8 +22,14 @@ class ContactForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Your message",
-                "rows": 3
+                "placeholder": "Your message"
             }
         )
+    )
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(
+        widget=forms.PasswordInput()
     )
