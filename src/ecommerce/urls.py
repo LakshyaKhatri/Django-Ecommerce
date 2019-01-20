@@ -21,6 +21,8 @@ from django.urls import re_path
 from .views import home_page, about_page, contact_page, login_page, register_page
 from products.views import product_list_view
 
+# Using re_path() instead of path() for
+# handelling dynamic URLs.
 urlpatterns = [
     re_path(r'^$', home_page),
     re_path(r'^about/$', about_page),
@@ -28,7 +30,7 @@ urlpatterns = [
     re_path(r'^login/$', login_page),
     re_path(r'^register/$', register_page),
     re_path(r'^products/$', product_list_view),
-    re_path(r'^admin/$', admin.site.urls),
+    re_path(r'^admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
