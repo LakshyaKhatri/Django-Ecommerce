@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.views.generic import DetailView
+from django.http import Http404
 
 from .models import Product
 # Create your views here.
@@ -12,9 +14,22 @@ def product_list_view(request):
     return render(request, "products/list.html", context)
 
 
-def product_detail_view(request, pk):
-    instance = get_object_or_404(Product, pk=pk)
-    context = {
-        'object': instance
-    }
-    return render(request, "products/detail.html", context)
+def get_modified_name(filename):
+    ...
+
+
+class ProductDetailView(DetailView):
+    template_name = "products/detail.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
+        # TODO: Remove below line:
+        print(context)
+        return(context)
+
+    def get_object(self, *args, **kwargs):
+        pk = self.kwargs.get("pk")
+        instance = Product.objects.get_by_id(pk)
+        if instance is None:
+            raise Http404("Product doesn't exist")
+        return instance

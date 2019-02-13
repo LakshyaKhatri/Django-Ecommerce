@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import re_path
 from .views import home_page, about_page, contact_page, login_page, register_page
-from products.views import product_list_view, product_detail_view
+from products.views import product_list_view, ProductDetailView
 
 # Using re_path() instead of path() for
 # handelling dynamic URLs.
@@ -30,7 +30,7 @@ urlpatterns = [
     re_path(r'^login/$', login_page),
     re_path(r'^register/$', register_page),
     re_path(r'^products/$', product_list_view),
-    re_path(r'^products/(?P<pk>\d+)/$', product_detail_view),
+    re_path(r'^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
     re_path(r'^admin/', admin.site.urls),
 ]
 
